@@ -12,7 +12,7 @@ function MembershipPage() {
 
     formData.append(
       "access_key",
-      "YOUR_WEB3FORMS_KEY"
+      "4aa8fb86-8e41-4893-905c-a52b34206e8c"
     );
 
     const response = await fetch(
