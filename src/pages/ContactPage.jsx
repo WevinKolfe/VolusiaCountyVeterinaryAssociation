@@ -1,84 +1,64 @@
-// import ContactForm from "../components/ContactForm";
+import { useState } from "react";
 
-function Contact() {
+function ContactPage() {
+  const [result, setResult] = useState("");
+
+  const onSubmit = async (event) => {
+    event.preventDefault();
+
+    setResult("Sending message...");
+
+    const formData = new FormData(event.target);
+
+    formData.append(
+      "access_key",
+      "0b737516-c442-4871-9267-749171f07930"
+    );
+
+    const response = await fetch(
+      "https://api.web3forms.com/submit",
+      {
+        method: "POST",
+        body: formData,
+      }
+    );
+
+    const data = await response.json();
+
+    if (data.success) {
+      setResult(
+        "Thank you for contacting the Volusia Veterinary Medical Association. A member of our team will respond as soon as possible."
+      );
+
+      event.target.reset();
+    } else {
+      setResult("Message failed to send. Please try again.");
+    }
+  };
+
   return (
-    <div className="contact-page">
+    <div className="container page">
+      <h1>Contact Us</h1>
 
-      <div className="contact-hero">
-        <h1>Contact Us!</h1>
+      <p>
+        Have a question about membership, events,
+        sponsorship opportunities, or joining our
+        email list? We'd love to hear from you.
+      </p>
 
-        <p>
-          For membership information, event details, 
-          or to join our email list, please contact us.
-        </p>
-      </div>
+      <div className="card" style={{ marginTop: "30px" }}>
 
-      <div className="contact-container">
+        <h2>Send Us a Message</h2>
 
-        <div className="contact-info">
-
-          <h2>Get In Touch</h2>
-
-          <div className="contact-item">
-            <h3>Email</h3>
-            <p>volusiavetassoc@gmail.com</p>
-          </div>
-
-          <div className="contact-item">
-            <h3>Organization</h3>
-            <p>Volusia Veterinary Medical Association</p>
-          </div>
-
-          <div className="contact-item">
-            <h3>Common Inquiries</h3>
-            <p>
-              Membership Information
-              <br />
-              Event Details
-              <br />
-              Email List Subscription
-            </p>
-          </div>
-
-        </div>
-
-        <form className="contact-form" action="https://api.web3forms.com/submit" method="POST">
-
-          <input
-            type="hidden"
-            name="access_key"
-            //value="4043aafa-87d1-42d0-b551-e8e1cccafad6"
-          />
-
-          <input
-            type="hidden"
-            name="subject"
-            value="New inquiry from Volusia Veterinary Medical Association Website"
-          />
-
-          <input
-            type="hidden"
-            name="from_name"
-            value="Volusia Veterinary Medical Association Website"
-          />
-
-          <input
-            type="hidden"
-            name="redirect"
-            value="https://volusiavetassociation.org/contact/success"
-          />
+        <form
+          onSubmit={onSubmit}
+          className="contact-form"
+        >
 
           <input
             type="text"
             name="name"
             placeholder="Full Name"
-            required
-          />
-
-          <input
-            type="text"
-            name="business"
-            placeholder="Business Name"
             required
           />
 
@@ -95,49 +75,112 @@ function Contact() {
             placeholder="Phone Number"
           />
 
+          <input
+            type="text"
+            name="organization"
+            placeholder="Clinic, Hospital, or Organization"
+          />
+
           <select
-            name="Inquiry Type"
+            name="inquiryType"
             required
           >
             <option value="">
-              Select a inquiry type
+              Select Inquiry Type
             </option>
 
-            <option>
+            <option value="Membership">
               Membership Information
             </option>
 
-            <option>
-              Event Details
+            <option value="Events">
+              Event Information
             </option>
 
-            <option>
-              Email List Subscription
+            <option value="Email List">
+              Join Email List
             </option>
 
-            <option>
-              Other
+            <option value="Volunteer">
+              Volunteer Opportunities
             </option>
 
+            <option value="Sponsorship">
+              Sponsorship Information
+            </option>
+
+            <option value="General">
+              General Inquiry
+            </option>
           </select>
 
           <textarea
             name="message"
             rows="6"
-            placeholder="Tell us about your inquiry..."
+            placeholder="How can we help you?"
             required
           ></textarea>
 
-          <button type="submit">
-            Submit Inquiry
+          <input
+            type="hidden"
+            name="subject"
+            value="New Contact Form Submission - VVMA Website"
+          />
+
+          <input
+            type="hidden"
+            name="from_name"
+            value="VVMA Website"
+          />
+
+          <button
+            type="submit"
+            className="btn"
+          >
+            Send Message
           </button>
 
         </form>
 
+        <p style={{ marginTop: "20px" }}>
+          {result}
+        </p>
+
+      </div>
+
+      <div
+        className="card"
+        style={{ marginTop: "30px" }}
+      >
+        <h2>Other Ways to Connect</h2>
+
+        <p>
+          <strong>Email:</strong><br />
+          volusiavetassoc@gmail.com
+        </p>
+
+        <br />
+
+        <p>
+          <strong>Facebook Community:</strong><br />
+          Connect with veterinary professionals from
+          across Volusia County in our official Facebook group.
+        </p>
+
+        <br />
+
+        <a
+          href="https://www.facebook.com/groups/volusiavets"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="btn"
+        >
+          Join Facebook Group
+        </a>
       </div>
 
     </div>
   );
 }
 
-export default Contact;
+export default ContactPage;
