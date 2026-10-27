@@ -73,10 +73,6 @@ function ResourcesPage() {
       category: "Mental Health & Wellbeing",
       links: [
         {
-          name: "Not One More Vet (NOMV)",
-          url: "https://www.nomv.org"
-        },
-        {
           name: "AVMA Wellbeing Resources",
           url: "https://www.avma.org"
         }
@@ -100,36 +96,36 @@ function ResourcesPage() {
         veterinary professionals throughout Volusia County.
       </p>
 
-      <div className="card-grid">
-        {resources.map((section, index) => (
-          <div className="card" key={index}>
-            <h3>{section.category}</h3>
+      <div className="resources-grid">
+        {resources.map((section) => (
+          <section
+            className="resource-group"
+            key={section.category}
+          >
+            <span className="resource-label">
+              Professional Resource
+            </span>
 
-            <ul
-              style={{
-                paddingLeft: "20px",
-                marginTop: "15px"
-              }}
-            >
-              {section.links.map((link, linkIndex) => (
-                <li
-                  key={linkIndex}
-                  style={{ marginBottom: "10px" }}
-                >
+            <h2>{section.category}</h2>
+
+            <ul className="resource-links">
+              {section.links.map((link) => (
+                <li key={link.url}>
                   <a
                     href={link.url}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    {link.name}
+                    <span>{link.name}</span>
+                    <span aria-hidden="true">↗</span>
                   </a>
                 </li>
               ))}
             </ul>
-          </div>
+          </section>
         ))}
       </div>
-
+      
       <div
         className="card"
         style={{

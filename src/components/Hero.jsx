@@ -3,44 +3,48 @@ import vvmaFacebookBanner from "../assets/images/vvmaFacebookBanner.jpg";
 
 function Hero() {
   return (
-    <section
-      className="hero"
-      style={{
-        backgroundImage: `url(${vvmaFacebookBanner})`,
-      }}
-    >
-      <div className="container">
-        <div className="hero-content">
-          <span className="hero-eyebrow">
-            Volusia County Veterinary Community
-          </span>
+    <section className="hero">
+      <div className="hero-banner">
+        <img
+          src={vvmaFacebookBanner}
+          alt="Volusia Veterinary Medical Association banner"
+        />
+      </div>
 
-          <h1>
-            Stronger together. Better for our teams.
-            Better for our patients.
-          </h1>
+      <div className="hero-introduction">
+        <div className="container">
+          <div className="hero-content">
+            <span className="hero-eyebrow">
+              Volusia County Veterinary Community
+            </span>
 
-          <p>
-            The Volusia Veterinary Medical Association
-            connects veterinary professionals across clinics,
-            roles, and specialties through community,
-            education, collaboration, and networking.
-          </p>
+            <h1>
+              Stronger together. Better for our teams.
+              Better for our patients.
+            </h1>
 
-          <div className="hero-buttons">
-            <Link to="/membership" className="btn">
-              Apply for Membership
-            </Link>
+            <p>
+              The Volusia Veterinary Medical Association
+              connects veterinary professionals across clinics,
+              roles, and specialties through community,
+              education, collaboration, and networking.
+            </p>
 
-            <Link to="/events" className="btn btn-secondary">
-              Explore Upcoming Events
-            </Link>
+            <div className="hero-buttons">
+              <Link to="/membership" className="btn">
+                Apply for Membership
+              </Link>
+
+              <Link to="/events" className="btn btn-secondary">
+                Explore Upcoming Events
+              </Link>
+            </div>
+
+            <p className="hero-note">
+              Open to veterinary professionals serving
+              Volusia County.
+            </p>
           </div>
-
-          <p className="hero-note">
-            Open to veterinary professionals serving
-            Volusia County.
-          </p>
         </div>
       </div>
     </section>
