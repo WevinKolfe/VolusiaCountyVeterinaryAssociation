@@ -4,16 +4,27 @@ function CTASection() {
   return (
     <section className="cta-section">
       <div className="container">
-        <h2>Join the Veterinary Community</h2>
+        <div className="cta-content">
+          <span className="section-eyebrow">
+            Stronger Together
+          </span>
 
-        <p>
-          Become part of a network dedicated to advancing veterinary
-          medicine and supporting animal health throughout Volusia County.
-        </p>
+          <h2>
+            Become part of the Volusia County veterinary
+            community
+          </h2>
 
-        <Link to="/membership" className="btn">
-          Join Today
-        </Link>
+          <p>
+            Connect with professionals across clinics,
+            roles, and specialties while helping build a
+            stronger veterinary community for our teams
+            and the patients we serve.
+          </p>
+
+          <Link to="/membership" className="btn">
+            Start Your Membership Application
+          </Link>
+        </div>
       </div>
     </section>
   );

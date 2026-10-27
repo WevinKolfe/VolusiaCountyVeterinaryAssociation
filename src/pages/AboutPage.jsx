@@ -1,41 +1,62 @@
 function AboutPage() {
   return (
     <div className="container page">
-      <h1>About VVMA</h1>
 
-      <p>
-        The Volusia Veterinary Medical Association exists to
-        bring Volusia County veterinary professionals together
-        across clinics, roles, and specialties to build a
-        stronger, more connected veterinary community.
-      </p>
+      <div className="page-header">
 
-      <h2>Our Mission</h2>
+        <h1>
+          Building a Stronger Veterinary Community
+        </h1>
 
-      <p>
-        We create meaningful community among veterinary teams,
-        encourage cross-clinic collaboration, and provide
-        educational and networking opportunities for every
-        member of the veterinary profession.
-      </p>
+        <p>
+          The Volusia Veterinary Medical Association
+          connects veterinary professionals across
+          clinics, specialties, and roles throughout
+          Volusia County.
+        </p>
 
-      <h2>Who Can Join?</h2>
+      </div>
 
-      <p>
-        Our community includes veterinarians, technicians,
-        assistants, practice managers, client service
-        representatives, kennel staff, students, and industry
-        professionals who serve veterinary medicine throughout
-        Volusia County.
-      </p>
+      <section className="content-section">
 
-      <h2>Our Vision</h2>
+        <h2>Our Mission</h2>
 
-      <p>
-        We believe that when veterinary professionals support
-        one another, the entire veterinary community and the
-        patients we serve benefit.
-      </p>
+        <p>
+          We create meaningful community among
+          veterinary teams, encourage collaboration,
+          and provide educational and networking
+          opportunities for veterinary professionals.
+        </p>
+
+      </section>
+
+      <section className="content-section">
+
+        <h2>Who We Serve</h2>
+
+        <p>
+          Our members include veterinarians,
+          veterinary technicians, assistants,
+          client service representatives,
+          practice managers, students,
+          and industry partners.
+        </p>
+
+      </section>
+
+      <section className="content-section">
+
+        <h2>Our Vision</h2>
+
+        <p>
+          We believe that when veterinary
+          professionals support one another,
+          the entire veterinary community and
+          the patients we serve benefit.
+        </p>
+
+      </section>
+
     </div>
   );
 }

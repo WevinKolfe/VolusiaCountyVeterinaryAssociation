@@ -1,51 +1,113 @@
-import { NavLink } from "react-router-dom";
+import { useState } from "react";
+import { Link, NavLink } from "react-router-dom";
 
 function Navbar() {
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const closeMenu = () => {
+    setMenuOpen(false);
+  };
+
+  const getNavClass = ({ isActive }) =>
+    isActive ? "active" : "";
+
   return (
-    <nav className="navbar">
+    <header className="navbar">
       <div className="container navbar-container">
-        <div className="logo">
-          VVMA
-        </div>
-
-        <div
-          className="nav-links"
-          style={{
-            display: "flex",
-            flexWrap: "wrap",
-            justifyContent: "center",
-            alignItems: "center",
-            gap: "0.75rem",
-            width: "100%",
-            boxSizing: "border-box",
-          }}
+        <Link
+          to="/"
+          className="logo"
+          onClick={closeMenu}
+          aria-label="Volusia Veterinary Medical Association home"
         >
-          <NavLink to="/">Home</NavLink>
+          <span className="logo-main">VVMA</span>
 
-          <NavLink to="/about">About</NavLink>
+          <span className="logo-subtitle">
+            Volusia Veterinary Medical Association
+          </span>
+        </Link>
 
-          <NavLink to="/membership">
-            Membership
+        <button
+          type="button"
+          className="nav-toggle"
+          aria-label={
+            menuOpen
+              ? "Close navigation menu"
+              : "Open navigation menu"
+          }
+          aria-expanded={menuOpen}
+          aria-controls="primary-navigation"
+          onClick={() => setMenuOpen((current) => !current)}
+        >
+          <span className="nav-toggle-lines" />
+        </button>
+
+        <nav
+          id="primary-navigation"
+          className={`nav-links ${menuOpen ? "open" : ""}`}
+          aria-label="Primary navigation"
+        >
+          <NavLink
+            to="/"
+            end
+            className={getNavClass}
+            onClick={closeMenu}
+          >
+            Home
           </NavLink>
 
-          <NavLink to="/events">
+          <NavLink
+            to="/about"
+            className={getNavClass}
+            onClick={closeMenu}
+          >
+            About
+          </NavLink>
+
+          <NavLink
+            to="/events"
+            className={getNavClass}
+            onClick={closeMenu}
+          >
             Events
           </NavLink>
 
-          <NavLink to="/directory">
+          <NavLink
+            to="/directory"
+            className={getNavClass}
+            onClick={closeMenu}
+          >
             Directory
           </NavLink>
 
-          <NavLink to="/resources">
+          <NavLink
+            to="/resources"
+            className={getNavClass}
+            onClick={closeMenu}
+          >
             Resources
           </NavLink>
 
-          <NavLink to="/contact">
+          <NavLink
+            to="/contact"
+            className={getNavClass}
+            onClick={closeMenu}
+          >
             Contact
           </NavLink>
-        </div>
+
+          <NavLink
+            to="/membership"
+            className={({ isActive }) =>
+              `nav-join ${isActive ? "active" : ""}`
+            }
+            onClick={closeMenu}
+          >
+            Apply to Join
+          </NavLink>
+        </nav>
       </div>
-    </nav>
+    </header>
   );
 }
 

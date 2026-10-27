@@ -1,4 +1,8 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter,
+  Route,
+  Routes,
+} from "react-router-dom";
 
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
@@ -17,43 +21,52 @@ import "./App.css";
 function App() {
   return (
     <BrowserRouter>
+      <a className="skip-link" href="#main-content">
+        Skip to main content
+      </a>
+
       <Navbar />
 
-      <Routes>
-        <Route path="/" element={<HomePage />} />
+      <div id="main-content">
+        <Routes>
+          <Route path="/" element={<HomePage />} />
 
-        <Route path="/about" element={<AboutPage />} />
+          <Route
+            path="/about"
+            element={<AboutPage />}
+          />
 
-        <Route
-          path="/membership"
-          element={<MembershipPage />}
-        />
+          <Route
+            path="/membership"
+            element={<MembershipPage />}
+          />
 
-        <Route
-          path="/events"
-          element={<EventsPage />}
-        />
+          <Route
+            path="/events"
+            element={<EventsPage />}
+          />
 
-        <Route
-          path="/directory"
-          element={<DirectoryPage />}
-        />
+          <Route
+            path="/directory"
+            element={<DirectoryPage />}
+          />
 
-        <Route
-          path="/resources"
-          element={<ResourcesPage />}
-        />
+          <Route
+            path="/resources"
+            element={<ResourcesPage />}
+          />
 
-        <Route
-          path="/sponsors"
-          element={<SponsorsPage />}
-        />
+          <Route
+            path="/sponsors"
+            element={<SponsorsPage />}
+          />
 
-        <Route
-          path="/contact"
-          element={<ContactPage />}
-        />
-      </Routes>
+          <Route
+            path="/contact"
+            element={<ContactPage />}
+          />
+        </Routes>
+      </div>
 
       <Footer />
     </BrowserRouter>

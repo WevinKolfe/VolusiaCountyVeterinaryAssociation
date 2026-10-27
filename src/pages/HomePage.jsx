@@ -7,14 +7,14 @@ import CTASection from "../components/CTASection";
 
 function HomePage() {
   return (
-    <>
+    <main>
       <Hero />
       <MemberBenefits />
       <UpcomingEvents />
       <FeaturedClinic />
       <Sponsors />
       <CTASection />
-    </>
+    </main>
   );
 }
 

@@ -3,31 +3,44 @@ import vvmaFacebookBanner from "../assets/images/vvmaFacebookBanner.jpg";
 
 function Hero() {
   return (
-    <section className="hero"
-    style={{
-      backgroundImage: `linear-gradient(
-      rgba(0,0,0,.45),
-      rgba(0,0,0,.45)
-      ), url(${vvmaFacebookBanner})`
-    }}>
+    <section
+      className="hero"
+      style={{
+        backgroundImage: `url(${vvmaFacebookBanner})`,
+      }}
+    >
       <div className="container">
-        <h1>Connecting Veterinary Professionals Across Volusia County</h1>
+        <div className="hero-content">
+          <span className="hero-eyebrow">
+            Volusia County Veterinary Community
+          </span>
 
-        <p>
-          The Volusia Veterinary Medical Association
-          brings veterinary professionals together
-          through community, education, and
-          networking opportunities.
-        </p>
+          <h1>
+            Stronger together. Better for our teams.
+            Better for our patients.
+          </h1>
 
-        <div className="hero-buttons">
-          <Link to="/membership" className="btn">
-            Become a Member
-          </Link>
+          <p>
+            The Volusia Veterinary Medical Association
+            connects veterinary professionals across clinics,
+            roles, and specialties through community,
+            education, collaboration, and networking.
+          </p>
 
-          <Link to="/events" className="btn btn-secondary">
-            View Events
-          </Link>
+          <div className="hero-buttons">
+            <Link to="/membership" className="btn">
+              Apply for Membership
+            </Link>
+
+            <Link to="/events" className="btn btn-secondary">
+              Explore Upcoming Events
+            </Link>
+          </div>
+
+          <p className="hero-note">
+            Open to veterinary professionals serving
+            Volusia County.
+          </p>
         </div>
       </div>
     </section>
