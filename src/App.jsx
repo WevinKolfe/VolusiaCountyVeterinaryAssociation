@@ -6,6 +6,7 @@ import {
 
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import ScrollToTop from "./components/ScrollToTop";
 
 import HomePage from "./pages/HomePage";
 import AboutPage from "./pages/AboutPage";
@@ -21,6 +22,8 @@ import "./App.css";
 function App() {
   return (
     <BrowserRouter>
+      <ScrollToTop />
+
       <a className="skip-link" href="#main-content">
         Skip to main content
       </a>
