@@ -1,4 +1,6 @@
+import PageTitle from "../components/PageTitle";
 function DirectoryPage() {
+
   const clinics = [
     {
       id: 1,
@@ -32,6 +34,7 @@ function DirectoryPage() {
 
   return (
     <main className="container page">
+      <PageTitle title="Veterinary Directory | Volusia County Veterinary Association" />
       <header className="page-header">
         <span className="section-eyebrow">
           Veterinary Care in Volusia County

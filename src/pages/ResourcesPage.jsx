@@ -1,4 +1,6 @@
+import PageTitle from "../components/PageTitle";
 function ResourcesPage() {
+
   const resources = [
     {
       category: "Professional Associations",
@@ -82,6 +84,7 @@ function ResourcesPage() {
 
   return (
     <div className="container page">
+      <PageTitle title="Resources | Volusia County Veterinary Association" />
       <h1>Resources</h1>
 
       <p

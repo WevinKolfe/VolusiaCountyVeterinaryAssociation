@@ -1,4 +1,5 @@
 import { useState } from "react";
+import PageTitle from "../components/PageTitle";
 
 function MembershipPage() {
   const [result, setResult] = useState("");
@@ -38,6 +39,7 @@ function MembershipPage() {
 
   return (
     <div className="container page">
+      <PageTitle title="Membership | Volusia County Veterinary Association" />
       <h1>Membership</h1>
 
       <p>

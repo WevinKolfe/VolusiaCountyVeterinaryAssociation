@@ -1,4 +1,6 @@
+import PageTitle from "../components/PageTitle";
 function EventsPage() {
+ 
   const events = [
     {
       title: "Monthly CE Dinner",
@@ -14,6 +16,7 @@ function EventsPage() {
 
   return (
     <div className="container page">
+      <PageTitle title="Events | Volusia County Veterinary Association" />
       <h1>Events</h1>
 
       <div className="card-grid">

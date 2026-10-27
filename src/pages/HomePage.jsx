@@ -1,3 +1,4 @@
+import PageTitle from "../components/PageTitle";
 import Hero from "../components/Hero";
 import MemberBenefits from "../components/MemberBenefits";
 import UpcomingEvents from "../components/UpcomingEvents";
@@ -6,8 +7,11 @@ import Sponsors from "../components/Sponsors";
 import CTASection from "../components/CTASection";
 
 function HomePage() {
+
+ 
   return (
     <main>
+      <PageTitle title="Home | Volusia County Veterinary Association" />
       <Hero />
       <MemberBenefits />
       <UpcomingEvents />
