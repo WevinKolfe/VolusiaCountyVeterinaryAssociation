@@ -8,6 +8,9 @@ function Hero() {
         <img
           src={vvmaFacebookBanner}
           alt="Volusia Veterinary Medical Association banner"
+          width="720"
+          height="290"
+          fetchPriority="high"
         />
       </div>
 

@@ -4,6 +4,12 @@
   --primary-dark: #3f9f94;
   --primary-soft: #dff4f0;
 
+ /*
+    Darker seafoam-derived color for text links
+    and small uppercase labels.
+  */
+  --primary-text: #216b63;
+
   --secondary: #f3d0be;
   --secondary-dark: #dca88e;
   --secondary-soft: #fff0e8;
@@ -44,6 +50,15 @@
   background: var(--background);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
+}
+
+.event-link:hover,
+.resource-links a:hover,
+.directory-link:hover {
+  color: #174f49;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
 }
 
 /* =========================
@@ -95,7 +110,7 @@ button {
 }
 
 a {
-  color: var(--primary-dark);
+  color: var(--primary-text);
   text-decoration: none;
 }
 
@@ -235,7 +250,7 @@ textarea:focus-visible {
 .section-eyebrow {
   display: inline-block;
   margin-bottom: 0.85rem;
-  color: var(--primary-dark);
+  color: var(--primary-text);
   font-size: 0.78rem;
   font-weight: 800;
   letter-spacing: 0.14em;
@@ -714,7 +729,7 @@ textarea:focus-visible {
 
 .event-link {
   position: relative;
-  color: var(--primary-dark);
+  color: var(--primary-text);
   font-weight: 750;
   white-space: nowrap;
 }
@@ -756,7 +771,7 @@ textarea:focus-visible {
 .clinic-label {
   display: block;
   margin-bottom: 1rem;
-  color: var(--primary-dark);
+  color: var(--primary-text);
   font-size: 0.72rem;
   font-weight: 800;
   letter-spacing: 0.1em;
@@ -1120,7 +1135,7 @@ textarea:focus-visible {
 .directory-location {
   display: block;
   margin-bottom: 0.8rem;
-  color: var(--primary-dark);
+  color: var(--primary-text);
   font-size: 0.73rem;
   font-weight: 850;
   letter-spacing: 0.1em;
@@ -1194,7 +1209,7 @@ textarea:focus-visible {
 .resource-label {
   display: block;
   margin-bottom: 0.8rem;
-  color: var(--primary-dark);
+  color: var(--primary-text);
   font-size: 0.7rem;
   font-weight: 850;
   letter-spacing: 0.11em;
