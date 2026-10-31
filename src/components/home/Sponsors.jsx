@@ -1,14 +1,6 @@
 import { Link } from "react-router-dom";
-
+import { sponsors } from "../../data/sponsors";
 function Sponsors() {
-  const sponsors = [
-    "Zoetis",
-    "IDEXX",
-    "Elanco",
-    "Purina",
-    "Hill's",
-    "Heska",
-  ];
 
   return (
     <section className="section section-soft">

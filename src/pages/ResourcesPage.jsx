@@ -1,4 +1,4 @@
-import PageTitle from "../components/PageTitle";
+import PageTitle from "../components/seo/PageTitle";
 function ResourcesPage() {
 
   const resources = [
@@ -84,7 +84,7 @@ function ResourcesPage() {
 
   return (
     <div className="container page">
-      <PageTitle title="Resources | Volusia County Veterinary Association" />
+      <PageTitle title="Resources | Volusia Veterinary Medical Association" />
       <h1>Resources</h1>
 
       <p

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import PageTitle from "../components/PageTitle";
+import PageTitle from "../components/seo/PageTitle";
 function ContactPage() {
   const [result, setResult] = useState("");
 
@@ -38,7 +38,7 @@ function ContactPage() {
 
   return (
     <div className="container page">
-      <PageTitle title="Contact | Volusia County Veterinary Association" />
+      <PageTitle title="Contact | Volusia Veterinary Medical Association" />
       <h1>Contact Us</h1>
 
       <p>
@@ -60,6 +60,9 @@ function ContactPage() {
             type="text"
             name="name"
             placeholder="Full Name"
+            autoComplete="name"
+            minLength={2}
+            maxLength={100}
             required
           />
 
@@ -67,6 +70,8 @@ function ContactPage() {
             type="email"
             name="email"
             placeholder="Email Address"
+            autoComplete="email"
+            maxLength={254}
             required
           />
 
@@ -74,12 +79,16 @@ function ContactPage() {
             type="tel"
             name="phone"
             placeholder="Phone Number"
+            autoComplete="tel"
+            maxLength={30}
           />
 
           <input
             type="text"
             name="organization"
             placeholder="Clinic, Hospital, or Organization"
+            autoComplete="organization"
+            maxLength={150}
           />
 
           <select
@@ -119,6 +128,8 @@ function ContactPage() {
             name="message"
             rows="6"
             placeholder="How can we help you?"
+            minLength={10}
+            maxLength={3000}
             required
           ></textarea>
 
@@ -133,6 +144,12 @@ function ContactPage() {
             name="from_name"
             value="VVMA Website"
           />
+
+          <div
+            className="h-captcha"
+            data-captcha="true"
+            data-theme="light"
+          ></div>
 
           <button
             type="submit"

@@ -1,17 +1,17 @@
-import PageTitle from "../components/PageTitle";
-import Hero from "../components/Hero";
-import MemberBenefits from "../components/MemberBenefits";
-import UpcomingEvents from "../components/UpcomingEvents";
-import FeaturedClinic from "../components/FeaturedClinic";
-import Sponsors from "../components/Sponsors";
-import CTASection from "../components/CTASection";
+import PageTitle from "../components/seo/PageTitle";
+import Hero from "../components/home/Hero";
+import MemberBenefits from "../components/home/MemberBenefits";
+import UpcomingEvents from "../components/home/UpcomingEvents";
+import FeaturedClinic from "../components/home/FeaturedClinic";
+import Sponsors from "../components/home/Sponsors";
+import CTASection from "../components/home/CTASection";
 
 function HomePage() {
 
  
   return (
     <main>
-      <PageTitle title="Home | Volusia County Veterinary Association" />
+      <PageTitle title="Volusia Veterinary Medical Association" />
       <Hero />
       <MemberBenefits />
       <UpcomingEvents />

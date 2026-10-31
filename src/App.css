@@ -923,6 +923,23 @@ textarea:focus-visible {
 }
 
 /* =========================
+   H-CAPTCHA
+   ========================= */
+.h-captcha {
+  display: flex;
+  min-height: 78px;
+  align-items: center;
+  overflow: hidden;
+}
+
+.contact-form button:disabled {
+  cursor: not-allowed;
+  opacity: 0.65;
+  transform: none;
+}
+
+
+/* =========================
    OPEN CONTENT GRID
    Used by directory, resources,
    membership types, and other pages
@@ -1246,6 +1263,10 @@ textarea:focus-visible {
   }
 }
 
+/* =========================
+   TABLET AND MOBILE
+   ========================= */
+
 @media (max-width: 720px) {
   :root {
     --section-space: 68px;
@@ -1259,9 +1280,13 @@ textarea:focus-visible {
     padding: 65px 0 85px;
   }
 
+  /* Navigation */
+
   .logo-subtitle {
     display: none;
   }
+
+  /* Hero */
 
   .hero {
     min-height: 0;
@@ -1270,8 +1295,8 @@ textarea:focus-visible {
 
   .hero-banner {
     width: 100%;
-    aspect-ratio: 720 / 290;
     max-height: none;
+    aspect-ratio: 720 / 290;
   }
 
   .hero-banner img {
@@ -1290,19 +1315,23 @@ textarea:focus-visible {
   }
 
   .hero-buttons {
-    align-items: stretch;
     flex-direction: column;
+    align-items: stretch;
   }
 
   .hero-buttons .btn {
     width: 100%;
   }
 
+  /* General content */
+
   .content-section {
     grid-template-columns: 1fr;
     gap: 1.25rem;
     padding: 40px 0;
   }
+
+  /* Membership benefits */
 
   .benefits-list {
     grid-template-columns: 1fr;
@@ -1317,6 +1346,8 @@ textarea:focus-visible {
     left: 0;
   }
 
+  /* Events */
+
   .event-row {
     grid-template-columns: 82px minmax(0, 1fr);
     gap: 1.2rem;
@@ -1326,25 +1357,33 @@ textarea:focus-visible {
     grid-column: 2;
     justify-self: start;
   }
+
+  /* Clinics */
 
   .clinic-list {
     grid-template-columns: 1fr;
     gap: 3.25rem;
   }
 
-  .resources-grid {
-    grid-template-columns: 1fr;
-    gap: 4rem;
-  }
+  /* Directory */
 
   .directory-grid {
     grid-template-columns: 1fr;
     gap: 3.5rem;
   }
 
+  /* Resources */
+
+  .resources-grid {
+    grid-template-columns: 1fr;
+    gap: 4rem;
+  }
+
+  /* Sponsors */
+
   .sponsors-row {
-    align-items: stretch;
     flex-direction: column;
+    align-items: stretch;
   }
 
   .sponsor-name {
@@ -1361,89 +1400,7 @@ textarea:focus-visible {
     display: none;
   }
 
-  .footer-grid {
-    grid-template-columns: 1fr;
-    gap: 2.5rem;
-  }
-
-  .footer-brand {
-    grid-column: auto;
-  }
-
-  .footer-bottom {
-    align-items: flex-start;
-    flex-direction: column;
-  }
-}
-
-@media (max-width: 720px) {
-  :root {
-    --section-space: 68px;
-  }
-
-  .container {
-    width: min(91%, var(--container));
-  }
-
-  .page {
-    padding: 65px 0 85px;
-  }
-
-  .logo-subtitle {
-    display: none;
-  }
-
-  .hero-buttons {
-    align-items: stretch;
-    flex-direction: column;
-  }
-
-  .hero-buttons .btn {
-    width: 100%;
-  }
-
-  .content-section {
-    grid-template-columns: 1fr;
-    gap: 1.25rem;
-    padding: 40px 0;
-  }
-
-  .benefits-list {
-    grid-template-columns: 1fr;
-  }
-
-  .event-row {
-    grid-template-columns: 82px minmax(0, 1fr);
-    gap: 1.2rem;
-  }
-
-  .event-row .event-link {
-    grid-column: 2;
-    justify-self: start;
-  }
-
-  .clinic-list {
-    grid-template-columns: 1fr;
-  }
-
-  .sponsors-row {
-    align-items: stretch;
-    flex-direction: column;
-  }
-
-  .sponsor-name {
-    padding: 18px 0;
-    text-align: center;
-    border-bottom: 1px solid var(--border);
-  }
-
-  .sponsor-name:last-child {
-    border-bottom: 0;
-  }
-
-  .sponsor-name::after {
-    display: none;
-  }
+  /* Footer */
 
   .footer-grid {
     grid-template-columns: 1fr;
@@ -1455,12 +1412,18 @@ textarea:focus-visible {
   }
 
   .footer-bottom {
-    align-items: flex-start;
     flex-direction: column;
+    align-items: flex-start;
   }
 }
+
+/* =========================
+   SMALL MOBILE
+   ========================= */
 
 @media (max-width: 420px) {
+  /* Navigation */
+
   .navbar-container {
     min-height: 72px;
   }
@@ -1469,16 +1432,23 @@ textarea:focus-visible {
     font-size: 1.25rem;
   }
 
+  /* Membership benefits */
+
   .benefit-item {
     padding: 0 0 0 1.3rem;
   }
+
+  /* Clinics */
 
   .clinic-item {
     padding: 0;
   }
 
+  /* Events */
+
   .event-row {
     grid-template-columns: 1fr;
+    gap: 1rem;
   }
 
   .event-date {
@@ -1488,34 +1458,7 @@ textarea:focus-visible {
 
   .event-row .event-link {
     grid-column: auto;
-  }
-}
-
-@media (max-width: 420px) {
-  .navbar-container {
-    min-height: 72px;
-  }
-
-  .logo-main {
-    font-size: 1.25rem;
-  }
-
-  .benefit-item,
-  .clinic-item {
-    padding: 26px 22px;
-  }
-
-  .event-row {
-    grid-template-columns: 1fr;
-  }
-
-  .event-date {
-    align-items: flex-start;
-    width: 90px;
-  }
-
-  .event-row .event-link {
-    grid-column: auto;
+    justify-self: start;
   }
 }
 

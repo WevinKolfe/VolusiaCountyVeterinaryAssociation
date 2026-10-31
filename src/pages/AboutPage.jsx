@@ -1,10 +1,10 @@
-import PageTitle from "../components/PageTitle";
+import PageTitle from "../components/seo/PageTitle";
 function AboutPage() {
 
   return (
     <div className="container page">
 
-      <PageTitle title="About | Volusia County Veterinary Association" />
+      <PageTitle title="About | Volusia Veterinary Medical Association" />
 
       <div className="page-header">
 

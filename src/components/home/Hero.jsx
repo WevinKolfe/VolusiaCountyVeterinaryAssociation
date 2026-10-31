@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import vvmaFacebookBanner from "../assets/images/vvmaFacebookBanner.jpg";
+import vvmaFacebookBanner from "../../assets/images/vvmaFacebookBanner.jpg";
 
 function Hero() {
   return (

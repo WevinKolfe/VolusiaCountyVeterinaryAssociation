@@ -4,9 +4,9 @@ import {
   Routes,
 } from "react-router-dom";
 
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
-import ScrollToTop from "./components/ScrollToTop";
+import Navbar from "./components/layout/Navbar";
+import Footer from "./components/layout/Footer";
+import ScrollToTop from "./components/layout/ScrollToTop";
 
 import HomePage from "./pages/HomePage";
 import AboutPage from "./pages/AboutPage";
@@ -14,7 +14,6 @@ import MembershipPage from "./pages/MembershipPage";
 import EventsPage from "./pages/EventsPage";
 import DirectoryPage from "./pages/DirectoryPage";
 import ResourcesPage from "./pages/ResourcesPage";
-import SponsorsPage from "./pages/SponsorsPage";
 import ContactPage from "./pages/ContactPage";
 
 import "./App.css";
@@ -57,11 +56,6 @@ function App() {
           <Route
             path="/resources"
             element={<ResourcesPage />}
-          />
-
-          <Route
-            path="/sponsors"
-            element={<SponsorsPage />}
           />
 
           <Route

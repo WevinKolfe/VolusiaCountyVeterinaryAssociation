@@ -1,5 +1,5 @@
 import { useState } from "react";
-import PageTitle from "../components/PageTitle";
+import PageTitle from "../components/seo/PageTitle";
 
 function MembershipPage() {
   const [result, setResult] = useState("");
@@ -39,7 +39,7 @@ function MembershipPage() {
 
   return (
     <div className="container page">
-      <PageTitle title="Membership | Volusia County Veterinary Association" />
+      <PageTitle title="Membership | Volusia Veterinary Medical Association" />
       <h1>Membership</h1>
 
       <p>
@@ -88,6 +88,8 @@ function MembershipPage() {
             type="text"
             name="name"
             placeholder="Full Name"
+            minLength={2}
+            maxLength={100}
             required
           />
 
@@ -95,6 +97,8 @@ function MembershipPage() {
             type="email"
             name="email"
             placeholder="Email Address"
+            autoComplete="email"
+            maxLength={254}
             required
           />
 
@@ -102,12 +106,17 @@ function MembershipPage() {
             type="tel"
             name="phone"
             placeholder="Phone Number"
+            autoComplete="tel"
+            maxLength={30}
           />
 
           <input
             type="text"
             name="clinic"
             placeholder="Clinic / Employer"
+            autoComplete="organization"
+            minLength={2}
+            maxLength={150}
             required
           />
 
@@ -115,6 +124,9 @@ function MembershipPage() {
             type="text"
             name="position"
             placeholder="Position / Job Title"
+            minLength={2}
+            maxLength={100}
+            autoComplete="job-title"
             required
           />
 
@@ -162,7 +174,10 @@ function MembershipPage() {
           <textarea
             name="about"
             rows="5"
+            minLength={20}
+            maxLength={3000}
             placeholder="Tell us a little about yourself and your role in veterinary medicine."
+            required
           ></textarea>
 
           <input
@@ -170,6 +185,12 @@ function MembershipPage() {
             name="subject"
             value="New VVMA Membership Application"
           />
+
+          <div
+            className="h-captcha"
+            data-captcha="true"
+            data-theme="light"
+          ></div>
 
           <button
             type="submit"
