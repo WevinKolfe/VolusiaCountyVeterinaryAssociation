@@ -1,41 +1,133 @@
-import { useState } from "react";
+import {
+  useCallback,
+  useRef,
+  useState,
+} from "react";
+
 import PageTitle from "../components/seo/PageTitle";
+import Web3Captcha from "../components/forms/Web3Captcha";
 
 function MembershipPage() {
   const [result, setResult] = useState("");
 
+  const [isSubmitting, setIsSubmitting] =
+    useState(false);
+  const [captchaToken, setCaptchaToken] =
+    useState("");
+
+  const captchaRef = useRef(null);
+
+  const handleCaptchaVerify = useCallback(
+    (token) => {
+      setCaptchaToken(token);
+      setResult("");
+    },
+    []
+  );
+
+  const handleCaptchaExpire = useCallback(() => {
+    setCaptchaToken("");
+  }, []);
+
   const onSubmit = async (event) => {
-    event.preventDefault();
+  event.preventDefault();
 
-    setResult("Submitting application...");
+  if (isSubmitting) {
+    return;
+  }
 
-    const formData = new FormData(event.target);
+  const form = event.currentTarget;
 
-    formData.append(
+  if (!form.checkValidity()) {
+    form.reportValidity();
+    return;
+  }
+
+  if (!captchaToken) {
+    setResult(
+      "Please complete the security check before submitting your application."
+    );
+
+    return;
+  }
+
+  setIsSubmitting(true);
+  setResult("Submitting application...");
+
+  const controller = new AbortController();
+
+  const timeoutId = window.setTimeout(() => {
+    controller.abort();
+  }, 15000);
+
+  try {
+    const formData = new FormData(form);
+
+    formData.set(
       "access_key",
       "4aa8fb86-8e41-4893-905c-a52b34206e8c"
+    );
+
+    formData.set(
+      "h-captcha-response",
+      captchaToken
     );
 
     const response = await fetch(
       "https://api.web3forms.com/submit",
       {
         method: "POST",
-        body: formData
+        body: formData,
+        signal: controller.signal,
+        headers: {
+          Accept: "application/json",
+        },
       }
     );
 
-    const data = await response.json();
+    let data;
 
-    if (data.success) {
-      setResult(
-        "Application submitted successfully. The VVMA leadership team will review your application."
+    try {
+      data = await response.json();
+    } catch {
+      throw new Error(
+        "The form service returned an invalid response."
       );
-
-      event.target.reset();
-    } else {
-      setResult("Submission failed.");
     }
-  };
+
+    if (!response.ok || !data.success) {
+      throw new Error(
+        data.message ||
+          "The application could not be submitted."
+      );
+    }
+
+    form.reset();
+    captchaRef.current?.reset();
+    setCaptchaToken("");
+
+    setResult(
+      "Application submitted successfully. The VVMA leadership team will review your application."
+    );
+  } catch (error) {
+    console.error(
+      "Membership application failed:",
+      error
+    );
+
+    captchaRef.current?.reset();
+    setCaptchaToken("");
+
+    setResult(
+      error.name === "AbortError"
+        ? "The request timed out. Please check your connection and try again."
+        : "The application could not be submitted. Please try again or email volusiavetassoc@gmail.com."
+    );
+  } finally {
+    window.clearTimeout(timeoutId);
+    setIsSubmitting(false);
+  }
+};
 
   return (
     <div className="container page">
@@ -50,7 +142,7 @@ function MembershipPage() {
       <div className="card-grid">
         <div className="card">
           <h3>Veterinarian Member</h3>
-          <p>Licensed veterinarians practicing in the region.</p>
+          <p>Licensed veterinarians practicing in the county.</p>
         </div>
 
         <div className="card">
@@ -126,7 +218,7 @@ function MembershipPage() {
             placeholder="Position / Job Title"
             minLength={2}
             maxLength={100}
-            autoComplete="job-title"
+            autoComplete="organization-title"
             required
           />
 
@@ -186,26 +278,33 @@ function MembershipPage() {
             value="New VVMA Membership Application"
           />
 
-          <div
-            className="h-captcha"
-            data-captcha="true"
-            data-theme="light"
-          ></div>
+          <Web3Captcha
+            ref={captchaRef}
+            onVerify={handleCaptchaVerify}
+            onExpire={handleCaptchaExpire}
+          />
 
           <button
             type="submit"
             className="btn"
+            disabled={isSubmitting}
           >
-            Submit Application
+            {isSubmitting
+              ? "Submitting..."
+              : "Submit Application"}
           </button>
 
         </form>
 
-        <p style={{ marginTop: "20px" }}>
+        <p
+          className="form-result"
+          role="status"
+          aria-live="polite"
+        >
           {result}
         </p>
-
-      </div>
+        
+        </div>
     </div>
   );
 }

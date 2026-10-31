@@ -1,18 +1,76 @@
-import { useState } from "react";
+import {
+  useCallback,
+  useRef,
+  useState,
+} from "react";
+
 import PageTitle from "../components/seo/PageTitle";
+import Web3Captcha from "../components/forms/Web3Captcha";
+
+
 function ContactPage() {
   const [result, setResult] = useState("");
+  const [isSubmitting, setIsSubmitting] =
+    useState(false);
+  const [captchaToken, setCaptchaToken] =
+    useState("");
+
+  const captchaRef = useRef(null);
+
+  const handleCaptchaVerify = useCallback(
+    (token) => {
+      setCaptchaToken(token);
+      setResult("");
+    },
+    []
+  );
+
+  const handleCaptchaExpire = useCallback(() => {
+    setCaptchaToken("");
+  }, []);
 
   const onSubmit = async (event) => {
-    event.preventDefault();
+  event.preventDefault();
 
-    setResult("Sending message...");
+  if (isSubmitting) {
+    return;
+  }
 
-    const formData = new FormData(event.target);
+  const form = event.currentTarget;
 
-    formData.append(
+  if (!form.checkValidity()) {
+    form.reportValidity();
+    return;
+  }
+
+  if (!captchaToken) {
+    setResult(
+      "Please complete the security check before sending your message."
+    );
+
+    return;
+  }
+
+  setIsSubmitting(true);
+  setResult("Sending message...");
+
+  const controller = new AbortController();
+
+  const timeoutId = window.setTimeout(() => {
+    controller.abort();
+  }, 15000);
+
+  try {
+    const formData = new FormData(form);
+
+    formData.set(
       "access_key",
       "0b737516-c442-4871-9267-749171f07930"
+    );
+
+    formData.set(
+      "h-captcha-response",
+      captchaToken
     );
 
     const response = await fetch(
@@ -20,21 +78,56 @@ function ContactPage() {
       {
         method: "POST",
         body: formData,
+        signal: controller.signal,
+        headers: {
+          Accept: "application/json",
+        },
       }
     );
 
-    const data = await response.json();
+    let data;
 
-    if (data.success) {
-      setResult(
-        "Thank you for contacting the Volusia Veterinary Medical Association. A member of our team will respond as soon as possible."
+    try {
+      data = await response.json();
+    } catch {
+      throw new Error(
+        "The form service returned an invalid response."
       );
-
-      event.target.reset();
-    } else {
-      setResult("Message failed to send. Please try again.");
     }
-  };
+
+    if (!response.ok || !data.success) {
+      throw new Error(
+        data.message ||
+          "The message could not be sent."
+      );
+    }
+
+    form.reset();
+    captchaRef.current?.reset();
+    setCaptchaToken("");
+
+    setResult(
+      "Thank you for contacting the Volusia Veterinary Medical Association. A member of the team will respond as soon as possible."
+    );
+  } catch (error) {
+    console.error(
+      "Contact form submission failed:",
+      error
+    );
+
+    captchaRef.current?.reset();
+    setCaptchaToken("");
+
+    setResult(
+      error.name === "AbortError"
+        ? "The request timed out. Please check your connection and try again."
+        : "The message could not be sent. Please try again or email volusiavetassoc@gmail.com."
+    );
+  } finally {
+    window.clearTimeout(timeoutId);
+    setIsSubmitting(false);
+  }
+};
 
   return (
     <div className="container page">
@@ -145,17 +238,20 @@ function ContactPage() {
             value="VVMA Website"
           />
 
-          <div
-            className="h-captcha"
-            data-captcha="true"
-            data-theme="light"
-          ></div>
+          <Web3Captcha
+            ref={captchaRef}
+            onVerify={handleCaptchaVerify}
+            onExpire={handleCaptchaExpire}
+          />
 
           <button
             type="submit"
             className="btn"
+            disabled={isSubmitting}
           >
-            Send Message
+            {isSubmitting
+              ? "Sending..."
+              : "Send Message"}
           </button>
 
         </form>

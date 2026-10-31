@@ -938,6 +938,37 @@ textarea:focus-visible {
   transform: none;
 }
 
+.captcha-section {
+  width: 100%;
+  min-height: 78px;
+}
+
+.captcha-error {
+  margin: 0.75rem 0 0;
+  color: var(--error);
+  font-size: 0.9rem;
+  font-weight: 650;
+}
+
+.contact-form button:disabled {
+  cursor: not-allowed;
+  opacity: 0.65;
+  transform: none;
+  box-shadow: none;
+}
+
+@media (max-width: 420px) {
+  .captcha-section {
+    max-width: 100%;
+    overflow: hidden;
+  }
+
+  .h-captcha {
+    width: 114%;
+    transform: scale(0.88);
+    transform-origin: left top;
+  }
+}
 
 /* =========================
    OPEN CONTENT GRID
