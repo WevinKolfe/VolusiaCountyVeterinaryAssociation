@@ -1,13 +1,18 @@
 # Volusia Veterinary Medical Association
 
-The Volusia Veterinary Medical Association connects veterinary professionals throughout Volusia County.
+The Volusia Veterinary Medical Association connects veterinary professionals throughout Volusia County through education, collaboration, networking, and community.
 
 ## Website Resources
 
-- https://volusia-county-veterinary-associati.vercel.app/
-- https://volusia-county-veterinary-associati.vercel.app/about
-- https://volusia-county-veterinary-associati.vercel.app/membership
-- https://volusia-county-veterinary-associati.vercel.app/events
-- https://volusia-county-veterinary-associati.vercel.app/directory
-- https://volusia-county-veterinary-associati.vercel.app/resources
-- https://volusia-county-veterinary-associati.vercel.app/contact
+- [Home](https://volusia-county-veterinary-associati.vercel.app/)
+- [About VVMA](https://volusia-county-veterinary-associati.vercel.app/about)
+- [Membership](https://volusia-county-veterinary-associati.vercel.app/membership)
+- [Events](https://volusia-county-veterinary-associati.vercel.app/events)
+- [Member Directory](https://volusia-county-veterinary-associati.vercel.app/directory)
+- [Veterinary Resources](https://volusia-county-veterinary-associati.vercel.app/resources)
+- [Contact VVMA](https://volusia-county-veterinary-associati.vercel.app/contact)
+
+## Contact
+
+- [Email VVMA](mailto:volusiavetassoc@gmail.com)
+- [Official Facebook Community](https://www.facebook.com/groups/volusiavets)
